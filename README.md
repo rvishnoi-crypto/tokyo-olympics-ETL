@@ -23,7 +23,7 @@ Link : https://www.kaggle.com/datasets/arjunprasadsarkhel/2021-olympics-in-tokyo
 
 ### 1. Data Modeling
 
-The first step was to build an understanding of the data we were dealing with. This meant knowing the data types of the columns and whether the data was ordinal or categorical. That analysis was essential and informed the different dimension and facts tables that we model in Step 4.
+The first step was to build an understanding of the data we were dealing with. This meant knowing the data types of the columns and whether the data was ordinal or categorical. That analysis was essential and informed the different dimension and facts tables that we model in Step 5.
 
 We also identified entities and their relationships. This meant coming up with primary and foreign keys and making sure we follow integrity constraints. We tried to make sure that the data was normalized and that each table's information is not duplicated in other tables.
 
@@ -78,4 +78,43 @@ The in-memory processing also provided several advantages:
 - Data Security: By processing data in memory, we also reduced concerns about file persistence or data exposure that could occur if the data were written to disk.
 - After the data was converted into Parquet format and loaded into memory, it was then pushed directly into the S3 bucket, completing the migration process.
 
-### 4. Storage Optimization
+### 4. Data Catloging and Verification
+After the data was successfully loaded into Amazon S3, the next step was to enable an automated mechanism to understand the structure and schema of the data. For this, we used AWS Glue Crawler, a tool designed to automatically discover the metadata of data stored in S3 and populate the AWS Glue Data Catalog with relevant information.
+
+#### Behind the Scenes: Glue Crawler
+The Glue Crawler is essentially a metadata discovery tool that scans data stored in S3 and catalogs it into a structured format within the AWS Glue Data Catalog. It performs a few key tasks:
+
+- Scanning Data: The Glue Crawler automatically scans files in the S3 bucket, reading the data stored in formats like Parquet, CSV, JSON, or others. In our case, it focused on Parquet files.
+
+- Schema Inference: As it scans the files, the Crawler infers the schema of the data (the column names, data types, and relationships between columns). For instance, it will determine if a column is an integer, string, date, or timestamp, based on the data in the file.
+
+- Partition Identification: The Crawler also identifies any partitioning structure present in the data, like dates or geographical regions. Partitions help organize the data for efficient querying, especially in large datasets. For example, if our data is partitioned by date (e.g., “year=2025/month=01/day=01”), the Glue Crawler would register this partitioning in the catalog.
+
+- Table Definition: After inferring the schema and partitions, the Crawler creates the table definition in the Glue Data Catalog. This table definition includes the name of the table, the schema (column names and data types), the partitioning information, and other relevant metadata like the data format (Parquet).
+
+#### Verifying Data with Athena
+Once the data metadata was recorded in the Glue Data Catalog, we turned to Amazon Athena to verify the data and confirm that it was consistent with the original data in RDS and that the schema matched.
+
+### 5. Dimensional Modelling
+Now that our data was properly stored and ready for consumption, it was time to think of how we would be using this data - What kind of Analytical queries would the data be used for, what kind of joins would be needed and how would a data or business analyst use the data. This informed how we created a Star Schema model and designed our facts and dim tables. 
+
+We created the following Model
+![Data Diagram](path/to/data_diagram.png)
+
+### 6. ETL process
+After successfully loading the data into Amazon S3 and defining our dimensional model in the data warehouse, the next crucial step was to implement the ETL (Extract, Transform, Load) process to move the data from its raw format into a usable state in the data warehouse. This involved creating and running ETL jobs using AWS Glue Notebooks, which provided a convenient and scalable environment for managing our data workflows.
+
+#### Overview of the ETL Process
+The primary purpose of the ETL process in this step was straightforward: we needed to:
+- Extract data from S3, leveraging the AWS Glue Data Catalog as a bridge for metadata management and schema inference.
+- Transform the data to align with the dimensional model we had designed. This step involved applying various transformations such as cleaning, filtering, mapping, and aggregating the data to meet the requirements of the data warehouse schema.
+- Load the transformed data into Serverless Redshift, Amazon’s managed data warehouse service, which allows us to scale our data storage and analytics needs without worrying about infrastructure management.
+
+While the main ETL process was relatively straightforward, several prerequisites had to be addressed to ensure the process could run smoothly. These prerequisites were critical for ensuring data consistency, accuracy, and performance throughout the pipeline. In the next section, which focuses on the Data Warehouse, I will detail these prerequisites.
+
+### 7. Data Warehousing
+The final step of the ETL process was to load the transformed data into Serverless Redshift, which is a scalable and cost-efficient cloud data warehouse solution provided by Amazon Web Services (AWS). To ensure that the loading process was smooth, we followed several critical steps to prepare the Redshift environment, configure the necessary services, and then validate that the data was correctly loaded. These preparatory tasks were essential for the success of the ETL pipeline.
+
+#### Key Steps in the Redshift Data Loading Process
+
+
