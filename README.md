@@ -105,7 +105,7 @@ After successfully loading the data into Amazon S3 and defining our dimensional 
 The primary purpose of the ETL process in this step was straightforward. We needed to:
 - Extract data from S3, leveraging the AWS Glue Data Catalog as a bridge for metadata management and schema inference.
 - Transform the data to align with the dimensional model we had designed.
-- Load the transformed data into Serverless Redshift, Amazon’s managed data warehouse service, which allows us to scale our data storage and analytics needs without worrying about infrastructure management.
+- Load the transformed data into Serverless Redshift, Amazon’s managed data warehouse service.
 
 While the main ETL process was relatively straightforward, several prerequisites had to be addressed to ensure the process could run smoothly. These prerequisites were critical for ensuring data consistency, accuracy, and performance throughout the pipeline. In the next section, which focuses on the Data Warehouse, I will detail these prerequisites.
 
