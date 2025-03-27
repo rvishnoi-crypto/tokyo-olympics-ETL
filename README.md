@@ -122,8 +122,8 @@ The final step of the ETL process was to load the transformed data into Serverle
 3. Attaching an IAM Role: In Redshift, IAM (Identity and Access Management) roles are used to define the permissions that a specific service, such as Redshift, has to interact with other AWS services like S3.
 4. Configuring Network Settings: AWS provides virtual private cloud (VPC) configurations that help isolate and secure the infrastructure. To ensure that the AWS Glue and Redshift services could communicate securely, I had to configure the network settings properly:
     -  Both Glue and Redshift services had to be located within the same VPC.
-    -  I had to ensure that the security groups associated with both services allowed traffic between them. Security groups act as a virtual firewall, and by adjusting the rules, I allowed Redshift to securely interact with        the Glue service, where data transformation was happening, and vice versa.
-5. Schema Creation in Redshift: Before we could load data into Redshift, we needed to define the schema of our tables. A schema represents the structure of the data (i.e., the table definitions, data types, and relationships between tables). The Redshift schema needs to be carefully designed to match the dimensional model we had previously created.
+    -  I had to ensure that the security groups associated with both services allowed traffic between them. Security groups act as a virtual firewall, and by adjusting the rules, I allowed Redshift to securely interact with the Glue service, where data transformation was happening, and vice versa.
+5. Schema Creation in Redshift: Before we could load data into Redshift, we needed to define the schema of our tables.The Redshift schema needs to be carefully designed to match the dimensional model we had previously created.
 
 Once all these prerequisite configurations were completed, we were ready to run the ETL pipeline to load the data into Serverless Redshift.
 
