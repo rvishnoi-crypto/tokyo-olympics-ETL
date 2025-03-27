@@ -76,7 +76,8 @@ The in-memory processing also provided several advantages:
 - Faster Processing: Since the data never touched the disk, memory access was much faster, reducing the time required to process and transfer the data.
 - Reduced Latency: The avoidance of disk I/O operations helped minimize latency during data transfer.
 - Data Security: By processing data in memory, we also reduced concerns about file persistence or data exposure that could occur if the data were written to disk.
-- After the data was converted into Parquet format and loaded into memory, it was then pushed directly into the S3 bucket, completing the migration process.
+
+After the data was converted into Parquet format and loaded into memory, it was then pushed directly into the S3 bucket, completing the migration process.
 
 ## 4. Data Catloging and Verification
 After the data was successfully loaded into Amazon S3, the next step was to enable an automated mechanism to understand the structure and schema of the data. For this, we used AWS Glue Crawler, a tool designed to automatically discover the metadata of data stored in S3 and populate the AWS Glue Data Catalog with relevant information.
