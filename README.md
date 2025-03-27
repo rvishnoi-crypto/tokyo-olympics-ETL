@@ -29,7 +29,7 @@ We also identified entities and their relationships. This meant coming up with p
 
 All our findings were highlighted in the Relational Model diagram below
 
-![Data Diagram](path/to/data_diagram.png)
+![Data Diagram](relational_model_diagram.png)
 
 ## 2. Data Loading
 
