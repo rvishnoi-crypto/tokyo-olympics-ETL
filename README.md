@@ -134,13 +134,10 @@ Out of curiosity, I took a deeper dive into some of the features of Amazon Redsh
 
 1.  **Massively Parallel Processing** (MPP) - Amazon Redshift uses MPP architecture to enable efficient query execution across distributed nodes in a cluster. In an MPP system, the workload is divided across multiple nodes, allowing for parallel processing and significantly improving performance.
 
-  In Redshift's MPP setup:
-  
-  - There is a leader node and multiple compute nodes.
-  
-  - The leader node is responsible for managing query execution, dividing the work into smaller tasks, coordinating between the compute nodes, and then aggregating the results before sending them back to the client.
-  
-  - The compute nodes store portions of the data, execute computations locally, and send the results back to the leader node for aggregation.
+In Redshift's MPP setup:  
+- There is a leader node and multiple compute nodes.  
+- The leader node is responsible for managing query execution, dividing the work into smaller tasks, coordinating between the compute nodes, and then aggregating the results before sending them back to the client.  
+- The compute nodes store portions of the data, execute computations locally, and send the results back to the leader node for aggregation.
 This architecture enables parallel processing, where each compute node works independently, allowing the system to process large datasets efficiently. It's somewhat similar to Apache Spark, but focused on SQL-based       
 analytical queries. The ability to distribute the processing load across nodes makes query execution faster, even for complex operations on large datasets.
 
