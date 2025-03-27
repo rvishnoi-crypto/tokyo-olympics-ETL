@@ -99,7 +99,7 @@ Once the data metadata was recorded in the Glue Data Catalog, we turned to Amazo
 Now that our data was properly stored and ready for consumption, it was time to think of how we would be using this data - What kind of Analytical queries would the data be used for, what kind of joins would be needed and how would a data or business analyst use the data. This informed how we created a Star Schema model and designed our facts and dim tables. 
 
 We created the following Model
-![Data Diagram](path/to/data_diagram.png)
+![Data Diagram](star_model_diagram.png)
 
 ## 6. ETL process
 After successfully loading the data into Amazon S3 and defining our dimensional model in the data warehouse, the next crucial step was to implement the ETL (Extract, Transform, Load) process to move the data from its raw format into a usable state in the data warehouse. This involved creating and running ETL jobs using AWS Glue Notebooks, which provided a convenient and scalable environment for managing our data workflows.
@@ -153,6 +153,7 @@ At this point we completed our ETL process succesfully and wanted to show how th
 For our analysis, we created a dashboard which comprised of multiple line charts answering questions like 'How does participation look like by country' or 'what was the distribution of medals by country'. We learned that we could also embed this dashboard in something like a webpage which users could refresh and use on a daily basis. 
 
 By working with AWS QuickSight I also learned that it uses a capability called SPICE (Super-Fast Parallel in-memory Calculation Engine). Its main objective is to improve the speed of data analysis by caching the data from redshift. This is especially useful when the data is static or when we are dealing with very slowly changing dimension tables. In my case, it was a single time data load into redshift and so I could leverage SPICE to make my dashboard queries faster. Ive learned that we can also use both SPICE and live query together - We can use SPICE for static or slowly changing dimensional tables and use the live query for tables that change daily. 
+
 
 ## Summary
 Overall this was a very fun project. If I were to go back and redo this project these are the things I would pay more attention to: 
