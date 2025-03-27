@@ -141,7 +141,7 @@ Out of curiosity, I took a deeper dive into some of the features of Amazon Redsh
 ## 8. Data Analysis
 At this point we completed our ETL process succesfully and wanted to show how that data in the data warehouse could be leveraged. So we decided to use AWS QuickSight to analyse the data. We used Redshift as our source and also made sure these services were in the same VPC, so they could communicate with each other. 
 
-For our analysis, we created a dashboard which comprised of multiple line charts answering questions like 'How does participation look like by country' or 'what was the distribution of medals by country'. We learned that we could also embed this dashboard in something like a webpage which users could refresh and use on a daily basis. 
+For our analysis, we created a dashboard which comprised of multiple bar charts answering questions like 'How does participation look like by country' or 'what was the distribution of medals by country'. We learned that we could also embed this dashboard in something like a webpage which users could refresh and use on a daily basis. 
 
 By working with AWS QuickSight I also learned that it uses a capability called SPICE (Super-Fast Parallel in-memory Calculation Engine). Its main objective is to improve the speed of data analysis by caching the data from redshift. This is especially useful when the data is static or when we are dealing with very slowly changing dimension tables. In my case, it was a single time data load into redshift and so I could leverage SPICE to make my dashboard queries faster. Ive learned that we can also use both SPICE and live query together - We can use SPICE for static or slowly changing dimensional tables and use the live query for tables that change daily. 
 
