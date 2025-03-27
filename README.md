@@ -145,7 +145,7 @@ For our analysis, we created a dashboard which comprised of multiple bar charts 
 
 By working with AWS QuickSight I also learned that it uses a capability called SPICE (Super-Fast Parallel in-memory Calculation Engine). Its main objective is to improve the speed of data analysis by caching the data from redshift. This is especially useful when the data is static or when we are dealing with very slowly changing dimension tables. In my case, it was a single time data load into redshift and so I could leverage SPICE to make my dashboard queries faster. Ive learned that we can also use both SPICE and live query together - We can use SPICE for static or slowly changing dimensional tables and use the live query for tables that change daily. 
 
-This marked the end of my project
+This marked the end of my project :)
 
 ![Data Diagram](quicksight_dashboard.png)
 
