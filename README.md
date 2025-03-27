@@ -102,7 +102,7 @@ We created the following Model
 After successfully loading the data into Amazon S3 and defining our dimensional model, the next crucial step was to implement the ETL (Extract, Transform, Load) process to move the data from its raw format into a usable state in the data warehouse. This involved creating and running ETL jobs using AWS Glue Notebooks, which provided a convenient and scalable environment for managing our data workflows.
 
 ### Overview of the ETL Process
-The primary purpose of the ETL process in this step was straightforward: we needed to:
+The primary purpose of the ETL process in this step was straightforward. We needed to:
 - Extract data from S3, leveraging the AWS Glue Data Catalog as a bridge for metadata management and schema inference.
 - Transform the data to align with the dimensional model we had designed.
 - Load the transformed data into Serverless Redshift, Amazon’s managed data warehouse service, which allows us to scale our data storage and analytics needs without worrying about infrastructure management.
