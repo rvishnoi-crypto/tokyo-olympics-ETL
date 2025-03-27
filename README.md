@@ -66,7 +66,7 @@ Initially, my thought was to perform the ETL process directly from the AWS RDS d
 
 ### Data Migration from RDS to S3
 
-To move data from RDS to S3, we wrote a custom script using the psycopg2 library to connect to our RDS cluster. The script fetched data from PostgreSQL, converted it into Parquet format using the to_parquet method and the fastparquet engine, and then loaded the data into an in-memory buffer (BytesIO). By processing the data in memory rather than writing it to disk, we minimized disk I/O operations, which helped reduce latency.
+To move data from RDS to S3, we wrote a custom script using the psycopg2 library to connect to our RDS cluster. The script fetched data from PostgreSQL, converted it into Parquet format using the `to_parquet` method and the `fastparquet` engine, and then loaded the data into an in-memory buffer (BytesIO). By processing the data in memory rather than writing it to disk, we minimized disk I/O operations, which helped reduce storage latency.
 
 The in-memory processing also provided several advantages:
 - Faster Processing: Since the data never touched the disk, memory access was much faster, reducing the time required to process and transfer the data.
