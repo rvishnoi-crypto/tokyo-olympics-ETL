@@ -16,7 +16,7 @@ In this project, I created an end-to-end ETL pipeline to analyze the 2021 Tokyo 
 ![Data Diagram](de_project_workflow_diagram.png)
 
 ## Data Source
-The Dataset was derived from Kaggle. The dataset contains details of over 11,000 athletes across 47 disciplines, representing 743 teams in the Tokyo Olympics. It includes information on athletes, coaches, teams, and gender participation.
+The Dataset was derived from Kaggle. The dataset contains details of over 11,000 athletes across 47 disciplines, representing 743 teams in the Tokyo Olympics. It includes information on athletes, coaches, teams, and gender participation. I stored the data locally on my computer.
 Link : https://www.kaggle.com/datasets/arjunprasadsarkhel/2021-olympics-in-tokyo
 
 ## Key Steps
