@@ -134,16 +134,14 @@ Out of curiosity, I took a deeper dive into some of the features of Amazon Redsh
 
 1.  **Massively Parallel Processing** (MPP) - Amazon Redshift uses MPP architecture to enable efficient query execution across distributed nodes in a cluster. In an MPP system, the workload is divided across multiple nodes, allowing for parallel processing and significantly improving performance.
 
-In Redshift's MPP setup:  
-- There is a leader node and multiple compute nodes.  
-- The leader node is responsible for managing query execution, dividing the work into smaller tasks, coordinating between the compute nodes, and then aggregating the results before sending them back to the client.  
-- The compute nodes store portions of the data, execute computations locally, and send the results back to the leader node for aggregation.
-This architecture enables parallel processing, where each compute node works independently, allowing the system to process large datasets efficiently. It's somewhat similar to Apache Spark, but focused on SQL-based       
-analytical queries. The ability to distribute the processing load across nodes makes query execution faster, even for complex operations on large datasets.
+    In Redshift's MPP setup:  
+    - There is a leader node and multiple compute nodes.  
+    - The leader node is responsible for managing query execution, dividing the work into smaller tasks, coordinating between the compute nodes, and then aggregating the results before sending them back to the client.  
+    - The compute nodes store portions of the data, execute computations locally, and send the results back to the leader node for aggregation.
+    This architecture enables parallel processing, where each compute node works independently, allowing the system to process large datasets efficiently. It's somewhat similar to Apache Spark, but focused on SQL-based       
+    analytical queries. The ability to distribute the processing load across nodes makes query execution faster, even for complex operations on large datasets.
 
-2. **Customizable Data Distribution and Sorting** - Redshift allows you to customize how your data is distributed and sorted across nodes, which can greatly optimize performance, especially for frequently run queries. When defining your DDL (Data Definition Language) statements, you can specify how the data should be distributed and sorted across the compute nodes using different distribution styles (key, even, or all).
-
-By customizing the distribution, you can optimize queries that are run regularly. For example, let’s say you have a dashboard service that queries a Redshift database daily. One of the queries might involve grouping employees by department and performing calculations on the group. If Redshift stores data for the same department on the same compute node, that query will run significantly faster because the relevant data is localized on the same node, minimizing the need to move data between nodes. This ensures more efficient query processing and faster performance for the end-user.
+2. **Customizable Data Distribution and Sorting** - Redshift allows you to customize how your data is distributed and sorted across nodes, which can greatly optimize performance, especially for frequently run queries. When defining your DDL (Data Definition Language) statements, you can specify how the data should be distributed and sorted across the compute nodes using different distribution styles (key, even, or all).By customizing the distribution, you can optimize queries that are run regularly. For example, let’s say you have a dashboard service that queries a Redshift database daily. One of the queries might involve grouping employees by department and performing calculations on the group. If Redshift stores data for the same department on the same compute node, that query will run significantly faster because the relevant data is localized on the same node, minimizing the need to move data between nodes. This ensures more efficient query processing and faster performance for the end-user.
   
 ## 8. Data Analysis
 At this point we completed our ETL process succesfully and wanted to show how that data in the data warehouse could be leveraged. So we decided to use AWS QuickSight to analyse the data. We used Redshift as our source and also made sure these services were in the same VPC, so they could communicate with each other. 
