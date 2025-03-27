@@ -110,7 +110,7 @@ The primary purpose of the ETL process in this step was straightforward. We need
 While the main ETL process was relatively straightforward, several prerequisites had to be addressed to ensure the process could run smoothly. These prerequisites were critical for ensuring data consistency, accuracy, and performance throughout the pipeline. In the next section, which focuses on the Data Warehouse, I will detail these prerequisites.
 
 ## 7. Data Warehousing
-The final step of the ETL process was to load the transformed data into Serverless Redshift, which is a scalable and cost-efficient cloud data warehouse solution provided by Amazon Web Services (AWS). To ensure that the loading process was smooth, we followed several critical steps to prepare the Redshift environment, configure the necessary services, and then validate that the data was correctly loaded. These preparatory tasks were essential for the success of the ETL pipeline.
+The final step of the ETL process was to load the transformed data into Serverless Redshift, which is a scalable and cost-efficient cloud data warehouse solution provided by Amazon Web Services (AWS). To ensure that the loading process was smooth, we followed several critical steps to prepare the Redshift environment, configure the necessary services, and then validate that the data was correctly loaded.
 
 ### Key Steps in the Redshift Data Loading Process
 1. Creating a Namespace: Defines the Storage part solution like DBs, tables, encryptions etc.
