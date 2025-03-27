@@ -45,7 +45,7 @@ To load the data, we wrote a Python script that used the following technologies:
 - Pandas: First, we read the CSV files using pandas.read_csv(), which allowed easy manipulation and inspection of the data.
 - SQLAlchemy: We used SQLAlchemy, a powerful SQL toolkit and Object-Relational Mapping (ORM) library, to interact with the PostgreSQL database. It allowed us to create database connections, perform queries, and execute transactions.
 - Column Mapping: Based on our relational model, we defined column mappings to ensure the data was correctly aligned with the database schema.
-- Bulk Data Loading: We used to_sql() from SQLAlchemy to efficiently load large datasets into the RDS instance.
+- Bulk Data Loading: We used to_sql() from SQLAlchemy to efficiently load our dataset into the RDS instance.
 
 ### Verification
 
